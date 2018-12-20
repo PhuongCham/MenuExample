@@ -32,6 +32,7 @@ Mô hình kinh doanh C2B2C
 Mô hình kinh doanh P2P ( peer to peer – mạng đồng đẳng )
 1.	Tìm hiểu chung
 Là một mạng máy tính mà hoạt động của nó dựa vào khả năng tính toán và băng thông của tất cả các máy tham gia chứ không tập trung vào các máy chủ trung tâm như thông thường, không có sự khác nhau giữa máy chủ và máy khách, tất cả các máy đều bình đẳng như nhau, mỗi máy là một nút mạng đóng vai trò vừa là máy chủ vừa là máy khách đối với máy khác trong mạng lưới.
+Vấn đề quan trọng của mô hình Peer to Peer là sending( cái máy Client có thể chia sẻ dữ liệu cho Client khác) vì nếu không có sending thì mô hình P2P cũng chỉ giống như mô hình Client-Server.
 Peer to Peer Lending có nghĩa là cho vay ngang hàng. Đây là mô hình kinh doanh giữa cá nhân, doanh nghiệp với nhà đầu tư thông qua kết nối internet để thực hiện vay tiền. Mô hình này hiện phát triển khá mạnh và sẽ sớm trở thành xu hướng phát triển rộng lớn toàn cầu.
 Peer to Peer Payment có nghĩa là thanh toán ngang hàng. Đây là hình thức thanh toán trực tuyến phát triển cực nhanh khi nó có khả năng chuyển khoản trực tiếp giữa hai cá nhân với nhau. Người dùng có thể mở tài khoản của một nhà cung cấp nhằm kết nối dịch vụ với tài khoản ngân hàng. Sau đó họ sẽ gửi tiền vào tài khoản để giao dịch, thanh toán với các cá nhân khác cũng có tài khoản tại nhà cung cấp đó. 
 Ưu điểm:
@@ -75,8 +76,12 @@ Các tính năng của ứng dụng:
 -	Tìm kiếm, kiểm tra thông tin của một số bãi đỗ
 -	Đặt chỗ
 -	Nhắc nhở người dùng thời gian hết hạn của bãi đỗ
--	Tính chi phí người dùng cần thanh toán đối với trường hợp thanh toán sau khi ra khỏi bãi đỗ, nếu thu phí sau khi ra khỏi bãi đỗ thì có thể kết hợp thu cả phí phạt nếu phương tiện đậu đỗ sai quy định
+-	Tính chi phí người dùng cần thanh toán đối với trường hợp thanh toán sau khi ra khỏi bãi đỗ, nếu thu phí sau khi ra khỏi bãi đỗ thì có thể kết hợp thu cả phí phạt nếu phương tiện đậu đỗ sai quy định. Đối với việc thu phí ngay khi đặt chỗ, người dùng có chức năng gia hạn bãi đỗ trong thời gian bãi đỗ còn hoạt động và cước phí được thanh toán như lúc thanh toán đặt chỗ.
+-	Quản lý thông tin cá nhân
+-	Tính năng tạo tài khoản, đặt chỗ, thanh toán thông qua SMS
+-	
 Vấn đề đối với ứng dụng:
+-	Thủ tục thanh toán cần đơn giản, dễ thực hiện
 -	
 Các luồng xử lý nghiệp vụ đặt chỗ trong mô hình sharing parking
 
