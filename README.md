@@ -9,7 +9,7 @@ Los Angeles:
 Giải pháp đề ra: thực hiện việc chia sẻ bãi đỗ xe. Tóm lại triết lý của bãi đậu xe được chia sẻ là về sử dụng cơ sở hạ tầng đậu xe hiện hành và chia sẻ nó thông qua một hệ thống bãi đậu xe thông minh. Điều này đưa chúng ta tới một giải pháp bền vững và có ý thức về môi trường hơn cho các vấn đề chính mà các thành phố của chúng ta phải đối mặt.
 …
 2.	Mô hình sharing parking:
-Là mô hình giúp người dùng có thể đặt chỗ cho xe của mình khi đến một khu vực nhất định.
+Là mô hình giúp người dùng có thể tìm và đặt chỗ cho xe của mình khi đến một khu vực nhất định.
 Hình thức hoạt động:
 Có hai đối tượng tham gia vào hình thức kinh doanh là người cho thuê chỗ(owner) và người thuê chỗ( renter). Owner có thể chia sẻ vị trí đỗ xe của mình như một hình thức kinh doanh, thông qua ứng dụng Renter sẽ tìm thấy những điểm đỗ xe còn trống mà Owner đã chia sẻ và tiến hành đặt chỗ. Chi phí sẽ được tính toán và chi trả thông qua liên kết của ứng dụng.
 Phương thức hoạt động:
@@ -23,6 +23,12 @@ Mô hình kinh doanh B2B (Business to Business - doanh nghiệp với doanh nghi
 Là loại hình giao dịch qua các phương tiện điện tử và mạng viễn thông đặc biệt là Internet giữa các doanh nghiệp với doanh nghiệp, hơn là với khách hàng. Thông qua đó các doanh nghiệp có thể chào hàng, tìm kiếm bạn hàng, đặt hàng, ký kết hợp đồng, thanh toán qua hệ thống này giúp các doanh nghiệp giảm chi phí về thu thập thông tin tìm hiểu thị trường, quảng cáo, tiếp thị, đàm phán và tăng cường cơ hội kinh doanh.
 2.	Đối với mô hình sharing parking
 Loại hình giao dịch trong sharing parking: exchange – nhiều người mua và nhiều người bán
+Mô hình kinh doanh C2B2C
+1.	Tìm hiểu chung
+Đây là mô hình mà một doanh nghiệp đóng vai trò là người kinh doanh làm trung gian giữa hai người tiêu dùng trao đổi hàng hóa. Đây là mô hình phổ biến trực tuyến cung cấp nền tảng cho hai bên có thể kinh doanh với nhau.
+2.	Đối với mô hình sharing parking
+Đối với mô hình kinh doanh này, ứng dụng sẽ đóng vai trò là người trung gian giúp cho việc kinh doanh trao đổi giữa hai bên.
+
 Mô hình kinh doanh P2P ( peer to peer – mạng đồng đẳng )
 1.	Tìm hiểu chung
 Là một mạng máy tính mà hoạt động của nó dựa vào khả năng tính toán và băng thông của tất cả các máy tham gia chứ không tập trung vào các máy chủ trung tâm như thông thường, không có sự khác nhau giữa máy chủ và máy khách, tất cả các máy đều bình đẳng như nhau, mỗi máy là một nút mạng đóng vai trò vừa là máy chủ vừa là máy khách đối với máy khác trong mạng lưới.
@@ -41,11 +47,6 @@ Nhược điểm:
 -	Các tài nguyên sẽ biến mất vì node cung cấp tài nguyên bị ngắt kết nối bất cứ lúc nào
 2.	Đối với mô hình sharing parking 
 Những chiếc xe đóng vai trò trung gian giữa người dùng và chủ sở hữu. Mô hình này có xu hướng A-to A vì xe sau khi sử dụng phải đưa về chỗ đậu xe của chủ sở hữu
-Mô hình kinh doanh C2B2C
-1.	Tìm hiểu chung
-Đây là mô hình mà một doanh nghiệp đóng vai trò là người kinh doanh làm trung gian giữa hai người tiêu dùng trao đổi hàng hóa. Đây là mô hình phổ biến trực tuyến cung cấp nền tảng cho hai bên có thể kinh doanh với nhau.
-2.	Đối với mô hình sharing parking
-
 3.	Các ứng dụng chia sẻ bãi đỗ xe tham khảo:
        https://www.forbes.com/sites/emmajohnson/2014/12/18/5-parking-apps-that-help-you-save-time-and-money/#62f5f25935ba     
 ParkWhiz Cho phép bạn mua, đặt trước và trả trước cho một điểm đỗ xe gần điểm đến của bạn. Thậm chí tạo mã quét nếu có. Hứa hẹn tiết kiệm lên đến 60 phần trăm. Ứng dụng có thể so sánh giá cả để chọn vị trí đỗ xe thích hợp.
@@ -63,14 +64,20 @@ AirportParkingReservations Đúng như tên gọi, ứng dụng này là tất c
 Park-King là ứng dụng giúp người dùng có thể tìm được vị trí đỗ xe chỉ trong vòng vài lần click. Nó hỗ trợ người dùng trong việc tìm ra vị trí đỗ xe nhanh chóng. Bên cạnh đó người dùng còn có thể thông qua ứng dụng mà chia sẻ bãi đỗ xe của mình để giảm thiểu chi phí đỗ xe cũng như giải quyết vấn đề bãi đỗ xe.
 
 Inugo cũng là ứng dụng giúp tìm vị trí đỗ xe nhanh chóng. Ưu điểm của nó là người dùng có thể mở khóa hàng ngàn chỗ đỗ xe có sẵn, mở rào chắn và cổng đỗ xe thông qua ứng dụng inugo
-
-Mô hình chia sẻ bãi đỗ xe thông minh: 
--	Vấn đề: các bãi đỗ xe của khu dân cư vào ban ngày thường it người sử dụng, bên cạnh đó thì các bãi đỗ xe của công ty, bệnh viện, các trường đại học, sân bay,… thường it người sử dụng vào ban đêm gây nên hiện tượng thừa thãi tài nguyên. Để khắc phục thì ta tận dụng những bãi đỗ xe này để khắc phục hiện trạng không có bãi đỗ xe.
--	Hình thức: liên kết với các bãi đỗ xe lớn, bãi đỗ xe công cộng như bãi đỗ xe của khu dân cư, các công ty, các địa điểm công cộng để người dùng có thể đỗ xe tại những địa điểm này vào thời gian rảnh
 4.	Ứng dụng My Parking
-Bài toán mô hình kinh doanh: cụ thể trong ứng dụng sẽ đóng vai trò là trung gian giữa Owner và Renter trong việc đặt chỗ và thanh toán.
-Bài toán hình thức thanh toán: renter sau khi xác nhận được vị trí đặt xe sẽ tiến hành thanh toán qua liên kết ngân hàng, tài khoản liên kết sẽ chuyển tiền
-Bài toán tiến trình đặt chỗ
+Nêu bài toán: tạo một ứng dụng liên kết giữa các công ty lớn, các khu dân cư, toàn nhà, bệnh viện,… những nơi mà có bãi đỗ xe có khả năng sẽ trống trong một khoảng thời gian. Ví dụ như tại các công ty thì vào thời gian ban đêm, bãi giữ xe thường không có người sử dụng hoặc tại các khu dân cư vào ban ngày khi mọi người đi làm thì hay để trống bãi giữ xe,…Ứng dụng giúp tận dụng các bãi giữ xe vào những thời gian trống đó để kinh doanh giúp đem lại lợi nhuận và hỗ trợ người dùng có vị trí đỗ xe nhanh nhất. Owner chỉ cần đăng kí bãi đỗ, đăng kí thời gian trống có thể cho thuê. Thông qua ứng dụng Renter có thể tìm kiếm được vị trí bãi đỗ, biết được số lượng chỗ trống và thông qua đó tiến hành đặt chỗ.
+Bài toán mô hình kinh doanh: ứng dụng sẽ đóng vai trò là trung gian giữa Owner và Renter trong việc đặt chỗ và thanh toán. 
+Bài toán hình thức thanh toán: renter sau khi xác nhận được vị trí đặt xe sẽ tiến hành thanh toán qua liên kết ngân hàng, tài khoản liên kết sẽ chuyển tiền đúng theo người kinh doanh. Nó sử dụng mô hình Peer to Peer Payment
+Bài toán tiến trình đặt chỗ: Renter sau khi xác định được vị trí đỗ xe thì sẽ gửi yêu cầu đặt chỗ, sau khi được xác nhận và hoàn tất việc thanh toán sẽ nhận về (mã code),Renter sử dụng mã code để qua cổng quét và vào khu vực đỗ xe.
+
+Các tính năng của ứng dụng:
+-	Hiển thị bản đồ
+-	Tìm kiếm, kiểm tra thông tin của một số bãi đỗ
+-	Đặt chỗ
+-	Nhắc nhở người dùng thời gian hết hạn của bãi đỗ
+-	Tính chi phí người dùng cần thanh toán đối với trường hợp thanh toán sau khi ra khỏi bãi đỗ, nếu thu phí sau khi ra khỏi bãi đỗ thì có thể kết hợp thu cả phí phạt nếu phương tiện đậu đỗ sai quy định
+Vấn đề đối với ứng dụng:
+-	
 Các luồng xử lý nghiệp vụ đặt chỗ trong mô hình sharing parking
 
 
