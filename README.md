@@ -102,7 +102,105 @@ https://martinfowler.com/articles/microservices.html
 Để chia tách một ứng dụng truyền thống thành các Microservice:
 - Điều kiện cần: có một kiến trúc cho hệ thống rõ ràng; CI/CD tools; Organization phù hợp để phát triển và vận hành hệ thống.
 
+ngày 26/12
 
+
+1 Đặt vấn đề
+Tại sao ta phải dùng microservices???
+Câu chuyện về cái bồn cầu=>https://toidicodedao.com/2017/02/21/tong-quan-micro-service/
+Micro là rất nhỏ, service là dịch vụ, vậy microservice nghĩa là… dịch vụ vô cùng nhỏ. Nói đơn giản, microservice là một kiếu kiến trúc phần mềm. Các module trong phần mềm này được chia thành các service rất nhỏ (microservice).
+2 Giới thiệu về kiến trúc một khối truyền thống 
+(lấy hỉnh ảnh từ chương 1)
+Thoát khỏi địa ngục nguyên khối
+Kiến trúc của ứng dụng FTGO: FTGO có kiến trúc lục giác, cốt lõi của ứng dụng bao gồm logic nghiệp vụ, xung quanh là các bộ điều hợp triển khai UI và giao diện với các hệ thống bên ngoài, chẳng hạn như các ứng dụng di động và dịch vụ đám mây để thanh toán, nhắn tin và email.
+=> đây là ví dụ về phong cách nguyên khối được sử dụng rộng rãi của kiến trúc phần mềm
+Tìm hiểu lợi ích của kiến trúc nguyên khối:
+- Phát triển đơn giản - IDE và các công cụ dành cho nhà phát triển khác được tập trung vào việc xây dựng một ứng dụng duy nhất.
+- Dễ dàng thực hiện các thay đổi căn bản cho ứng dụng - Bạn có thể thay đổi mã và lược đồ cơ sở dữ liệu, xây dựng và triển khai.
+- Đơn giản để kiểm tra - Các nhà phát triển đã viết các thử nghiệm đầu cuối đã khởi chạy ứng dụng, gọi API REST và thử nghiệm UI với Selenium.
+- Đơn giản để triển khai - Tất cả các nhà phát triển phải làm là sao chép tệp WAR vào máy chủ đã cài đặt Tomcat.
+- Dễ dàng chia tỷ lệ - FTGO chạy nhiều phiên bản của ứng dụng đằng sau bộ cân bằng tải.
+=> Vậy tại sao hiện nay đối với FTGFO ta lại gọi là địa ngục nguyên khối???
+Theo thời gian việc phát triển, thử nghiệm, triển khai và nhân rộng trở nên khó khăn hơn nhiều, vì sao???
+Kiến trúc nguyên khối có một hạn chế rất lớn: khi triển khai phát triển làm cho cơ sở mã lớn hơn, các nhóm phát triển nhỏ trở thành nhiều nhóm Scrum, mỗi nhóm hoạt động trên một chức năng cụ thể làm cho FTGO ở trong địa ngục nguyên khối, phất triển chậm và đau đớn.
+FTGO là một ứng dụng phức tạp nên việc sửa lỗi, triển khai tính năng mới trở nên khó khăn và tốn thời gian. 
+Bên cạnh đó kiến trúc nguyên khối còn khiến cho FTGO phát triển chậm, làm con đường đi từ cam kết đến triển khai dài và gian nan, mở rộng quy mô là khó khăn, việc cung cấp một nguyên khối đáng tin cậy là một thách thức, bị khóa vào ngăn xếp công việc ngày càng lỗi thời( kiến trúc buộc họ phải sử dụng một chồng công nghệ ngày càng trở nên lỗi thời, gây khó khăn cho việc áp dụng các khuôn khổ và ngôn ngữ mới)
+=> từ đó FTGO áp dụng kiến trúc microservice để giải cứu!!!
+*Kiến trúc microservice
+- (tìm hiểu thêm về kiến trúc của microservice theo mô hình chia 3 trục X,Y,Z)
+=> kiến trúc microservice là một kiểu kiến trúc có chức năng phân rã một ứng dụng thành một tập hợp các dịch vụ, điều quan trọng của một dịch vụ là có một tập hợp trách nhiệm tập trung, gắn kết.
+* tìm hiểu chi tiết về kiến trúc microservice.
+- microservice như một dạng modun: tính modun là điều cần thiết khi phát triển các ứng dụng lớn, phức tạp. Microservice sử dụng các dịch vụ như là đơn vị của modun, nên việc bảo toàn tính modun của ứng dụng theo thời gian sẽ dễ dàng hơn
+- mỗi dịch vụ có cơ sở dữ liệu riêng: đối với microservice các dịch vụ được ghép nối lỏng lẻo và chỉ giao tiếp qua API, mỗi dịch vụ có kho dữ liệu riêng nên ta có thể tránh được các điểm như nhà phát triển có thể thay đổi lược đồ của dịch vụ mà khồng phải phối hợp nhà phát triển làm việc trên các dịch vụ khác; dịch vụ sẽ không bao giờ bị chặn vì dịch vụ khác khóa cơ sở dữ liệu.
+*Tìm hiểu thông qua kiến trúc Microservice FTGO:
+*So sánh kiến trúc Microservice và SOA: tuy ta thấy rằng SOA và microservice là các kiểu kiến trúc cấu trúc một hệ thống như một tập hợp các dịch vụ nhưng, ta có bảng so sánh( chương 1 phần 1.4.5)
+* Lợi ích và hạn chế của microservice:
+- Lợi ích:
++ Nó cho phép phân phối và triển khai liên tục các ứng dụng lớn, phức tạp ( microservice có ba cách cho phép phân phối triển khai là 
+.kiểm tra theo yêu cầu của phân phối/ triển khai liên tục: kiểm tra tự động dễ viết hơn nhiều và thực thi nhanh hơn giúp ứng dụng it lỗi hơn
+.triển khai theo yêu cầu của việc phân phối triển khai liên tục: mỗi dịch vụ được triển khai độc lập với các dịch vụ khác giúp việc triển khai dễ dàng hơn nhiều
+.cho phép các nhóm phát triển có thể tự chủ và kết nối lỏng lẻo: giúp tốc độ phát triển cao hơn
+=>đem lại nhiều lợi ích kinh doanh như giảm thời gian đưa ra thị trường, phản ứng nhanh với phản hồi từ khách hàng, cung cấp được dịch vụ đáng tin cậy, làm hài lòng nhân viên hơn vì được làm việc cung cấp các tính năng có giá trị thay vì chữa cháy.
++ Dịch vụ là nhỏ và dễ dàng duy trì.
++ Dịch vụ có khả năng mở rộng độc lập.
++ Cách ly lỗi tốt hơn vì nếu có rò rỉ, gặp lỗi trong một dịch vụ thì chỉ ảnh hưởng đến dịch vụ đó.
++ Kiến trúc microservice cho phép các nhóm được tự chủ.
++ Nó cho phép dễ dàng thử nghiệm và áp dụng các công nghệ mới
+- Hạn chế:
++ Tìm đúng bộ dịch vụ là một thách thức: Microservice không có một thuật toán cụ thể, rõ ràng để phân tách một hệ thống thành các dịch vụ. Nếu ta phân tách không chính xác sẽ làm hệ thống trở thành một khối nguyên khối phân tán mà chứa cả nhược điểm của kiến trúc nguyên khối và microservice.
++ Các hệ thống phân tán rất phức tạp, khiến cho việc phát triển, thử nghiệm và triển khai trở nên khó khăn: dịch vụ phải có cơ chế truyền thông liên tiến trình và phải được thiết kế để xử lý lỗi một phần và xử lý dịch vụ từ xa không khả dụng hoặc có độ trễ cao.
++ Triển khai các tính năng trải rộng trên nhiều dịch vụ đòi hỏi sự phối hợp cẩn thận.
++ Quyết định khi nào nên áp dụng kiến ​​trúc microservice là khó khăn.
+=> vậy làm sao để quyết định lựa chọn kiểu kiến trúc nào cho phù hợp??? một cách rất tốt đó là sử dụng ngôn ngữ mẫu. Nó là một tập hợp các mẫu giúp bạn kiến trúc một ứng dụng bằng kiến trúc microservice, giúp bạn quyết định có sử dụng kiến trúc microservice không, nếu bạn chọn kiến trúc microservice, ngôn ngữ mẫu sẽ giúp bạn áp dụng hiệu quả.
+=> Kết luận: đối với những ứng dụng lớn, phức tạp thì microservice là lựa chọn tốt nhất.
+3. Chiến lược phân rã - decomposition
+4. Khu dịch vụ vi mô - microxervice chassis
+5. Phát triển logic kinh doanh - developing business logic
+6. Tìm nguồn cung ứng sự kiện - event sourcing
+7. IPC
+8. CQRS-MONGODB
+9. APT Gateway
+Vấn đề: khi là một cấu trúc nguyên khối thì API tiếp xúc với khách hàng là API nguyên khối, nhưng khi triển khai Microservice thì không còn một API nào nữa vì mối dịch vụ đều có API riêng nên đã đặt ra khó khăn trong việc thiết kế API bên ngoài của ứng dụng
+Ý tưởng chính của API Gateway là sử dụng một cổng truyền tin gọn nhẹ như một điểm vào chính cho tất cả các khách hàng, người dùng và triển khai những chức năng chung mà không liên quan đến nghiệp vụ đặc thù ở cấp Gateway này.
+API Gateway chịu trách nhiệm định tuyến các request, tổng hợp và chuyển đổi giao thức. Nó như một tổng đài để điều phối các request.
+Tại sao nên dùng API Gateway: khi ta không sử dụng nó thì client sẽ gửi request trực tiếp tới service cụ thể nào đó và dẫn đến một số rắc rối với client như:
++ Phần code phía client sẽ trở nên phức tạp vì phải tracking nhiều endpoint.
++ Sẽ tạo sự kết nối giữa client và backend. Client cần biết được các services đó đc phân chia như thế nào -> rất khó cho việc maitain của client và refactor service.
++ Mỗi một service sẽ phải handle nhiều vấn đề liên quan như authentiaction, SSL hay client rate limiting.
+* Ưu và nhược điểm của API Gateway
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10. Triển khai dịch vụ với docker - deploying services with docker
+11. Tái cấu trúc Microservice- Refactoring to Microservice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+observability patterns
+effective software testing
 
 
 
