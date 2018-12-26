@@ -159,6 +159,7 @@ Bên cạnh đó kiến trúc nguyên khối còn khiến cho FTGO phát triển
 6. Tìm nguồn cung ứng sự kiện - event sourcing
 7. IPC
 8. CQRS-MONGODB
+https://microservices.io/patterns/data/cqrs.html
 9. APT Gateway
 Vấn đề: khi là một cấu trúc nguyên khối thì API tiếp xúc với khách hàng là API nguyên khối, nhưng khi triển khai Microservice thì không còn một API nào nữa vì mối dịch vụ đều có API riêng nên đã đặt ra khó khăn trong việc thiết kế API bên ngoài của ứng dụng
 Ý tưởng chính của API Gateway là sử dụng một cổng truyền tin gọn nhẹ như một điểm vào chính cho tất cả các khách hàng, người dùng và triển khai những chức năng chung mà không liên quan đến nghiệp vụ đặc thù ở cấp Gateway này.
@@ -167,8 +168,28 @@ Tại sao nên dùng API Gateway: khi ta không sử dụng nó thì client sẽ
 + Phần code phía client sẽ trở nên phức tạp vì phải tracking nhiều endpoint.
 + Sẽ tạo sự kết nối giữa client và backend. Client cần biết được các services đó đc phân chia như thế nào -> rất khó cho việc maitain của client và refactor service.
 + Mỗi một service sẽ phải handle nhiều vấn đề liên quan như authentiaction, SSL hay client rate limiting.
-* Ưu và nhược điểm của API Gateway
+Tổng quan về mẫu cổng API:
+- Cổng API chịu trách nhiệm định tuyến yêu cầu. Bên cạnh đó một API có thể triển khai một số thao tác API bằng cách sử dụng thành phần API. Cổng API còn có thể thực hiện giao thức dịch, có th cũng cấp API RESTful cho các khách bên ngoài
+- Kiến trúc cổng API: có kiến trúc mô dun nhiều lớp, bao gồm 2 lớp là lớp API và lớp chung. Lớp API gồm một hoặc nhiều mô dun API độc lập, mỗi modun thực hiện một API cho một khách hàng cụ thể; lớp chung thực hiện chức năng chia sẻ. bao gồm các chức năng cạnh như xác thực.
+Mỗi modun API thực hiện hoạt động API theo một trong hai cách: Một số hoạt động API ánh xạ trực tiếp đến hoạt động API dịch vụ duy nhất. Một mô-đun API thực hiện các hoạt động này bằng cách định tuyến các yêu cầu đến hoạt động API dịch vụ tương ứng. Nó có thể định tuyến các yêu cầu bằng cách sử dụng một mô đun định tuyến chung để đọc tệp cấu hình mô tả các quy tắc định tuyến.
 
+Một mô-đun API triển khai các hoạt động API phức tạp hơn khác bằng cách sử dụng thành phần API. Việc triển khai hoạt động API này bao gồm mã tùy chỉnh. Mỗi triển khai hoạt động API xử lý các yêu cầu bằng cách gọi nhiều dịch vụ và kết hợp các kết quả.
+Mô hình sở hữu cổng API?
+Người chịu trách nhiệm phát triển cổng API và hoạt động của nó, chẳng hạn như:
++ Cho một nhóm riêng chịu trách nhiệm về cổng API
++ Cách tốt hơn là dành cho nhóm khách hàng, nhóm các nhóm API di dộng, web và công cộng, sở hữu modun API hiển thị API của họ, khi họ thay đổi ứng dụng khách, họ có thể thay đổi modun API và không yêu cầu nhóm cổng API thực hiện các thay đổi
+* Ưu và nhược điểm của API Gateway
+Ưu điểm:
++ Cách ly khách hàng khỏi cách ứng dụng được phân vùng vào microservice
++ Cách ly khách hàng khỏi vấn đề xác định vị trí của các trường hợp dịch vụ
++ Cung cấp API tối ưu cho từng khách hàng
++ Giảm số lượng yêu cầu / roundtrips. Ví dụ: cổng API cho phép khách hàng truy xuất dữ liệu từ nhiều dịch vụ với một chuyến đi khứ hồi. Ít yêu cầu hơn cũng có nghĩa là ít chi phí hơn và cải thiện trải nghiệm người dùng. Cổng API rất cần thiết cho các ứng dụng di động.
++ Đơn giản hóa máy khách bằng cách di chuyển logic để gọi nhiều dịch vụ từ máy khách đến cổng API
++ Dịch từ một giao thức API thân thiện với web công cộng của tiêu chuẩn thành một bất kỳ giao thức nào được sử dụng trong nội bộ
+Nhược điểm:
++ Độ phức tạp tăng lên - cổng API là một phần chuyển động khác phải được phát triển, triển khai và quản lý
++ Thời gian phản hồi tăng lên do bước nhảy mạng bổ sung thông qua cổng API - tuy nhiên, đối với hầu hết các ứng dụng, chi phí cho một vòng tròn thêm là không đáng kể.
+* Netflix - ví dụ về cổng API:
 
 
 
@@ -201,13 +222,5 @@ Tại sao nên dùng API Gateway: khi ta không sử dụng nó thì client sẽ
 
 observability patterns
 effective software testing
-
-
-
-
-
-
-
-
 
 
